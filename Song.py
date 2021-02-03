@@ -30,7 +30,7 @@ class Song:
     return print(f"Here's the song! {self.__title}" .format(self=self))
 
 
-  # TODO: Using the __repr__ dunder method, return a string formatted as the following:'Song Title -> Next Song Title'
+  # Using the __repr__ dunder method, return a string formatted as the following:'Song Title -> Next Song Title'
   def __repr__(self):
     rep = print(self.__title + '->' + self.__next_song)
     return rep
@@ -42,3 +42,4 @@ rap.set_next_song('Test2')
 rap.get_next_song()
 rap.__str__()
 rap.__repr__()
+rap.get_title()
