@@ -5,7 +5,7 @@ class Playlist:
     self.__first_song = None
 
 
-  # TODO: Create a method called add_song that creates a Song object and adds it to the playlist. This method has one parameter called title.
+  #  creates a Song object and adds it to the playlist. This method has one parameter called title.
 
   def add_song(self, title):
     new_song = Song(title)
@@ -14,45 +14,57 @@ class Playlist:
 
 
 
-  # TODO: Create a method called find_song that searches for whether a song exits in the playlist and returns its index. The method has one parameters, title, which is the title of the song to be searched for. If the song is found, return its index.
+  #  searches for whether a song exits in the playlist and returns its index. The method has one parameters, title, which is the title of the song to be searched for. If the song is found, return its index.
 
   def find_song(self, title):
     present_song = self.__first_song
     index = 0
 
     while present_song != None:
-      if present_song.get_title() == title:
+      if present_song.get_title == title:
+        index += 1
         return index
-      else:
-        print("Song not found try again!")
+      
+      if present_song.get_title() != title:
+        index += 1
+        present_song = present_song.get_next_song()
+  
 
-  # TODO: Create a method called remove_song that removes a song from the playlist. This method takes one parameter, title, which is the song that should be removed. 
+
+
+  #  removes a song from the playlist. This method takes one parameter, title, which is the song that should be removed. 
 
   def remove_song(self, title):
-    current_song = self.__first_song
-
-    while current_song != None:
-      if current_song.get_title() == title:
-        present_song = present_song.get_title()
-         
+    present_song = self.__first_song
+    previous_song = self.__first_song
 
 
+    if present_song.get_title() == title:
+        self.__first_song = self.__first_song.get_next_song()
+        return f"{present_song.get_title} has been deleted from playlist!"
+
+    while present_song.get_title() != title:
+      previous_song = present_song
+      present_song = present_song.get_next_song()
+
+      if present_song ==  None:
+        return f'Sorry song not found.'
 
 
-
-  # TODO: Create a method called length, which returns the number of songs in the playlist.
+      
+      # returns the number of songs in the playlist.
 
   def length(self):
     present_song = self.__first_song
     counter = 0
 
     while present_song != None:
-      counter += 1
       present_song = present_song.get_next_song
+      counter += 1
       return counter
 
 
-  # TODO: Create a method called print_songs that prints a numbered list of the songs in the playlist.
+  #  prints a numbered list of the songs in the playlist.
 
   # Example:
   # 1. Song Title 1
@@ -63,11 +75,7 @@ class Playlist:
     present_song = self.__first_song
     counter = 1
 
-    while present_song != None:
-      print(f'{counter}. {present_song}')
-      present_song = present_song.get_next_song
+    while present_song != present_song:
+      print(f'{counter}. {present_song} {counter}')
       counter += 1
-
-cool = Playlist()
-cool.add_song('hermie')
-cool.find_song('hermie')
+      present_song = present_song
